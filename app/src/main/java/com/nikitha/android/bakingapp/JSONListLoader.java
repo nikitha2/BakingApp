@@ -1,27 +1,25 @@
 package com.nikitha.android.bakingapp;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+
+import com.nikitha.android.bakingapp.pojo.IngredientItems;
+import com.nikitha.android.bakingapp.pojo.ListItems;
+import com.nikitha.android.bakingapp.pojo.StepItems;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
-import androidx.loader.content.Loader;
 
 public class JSONListLoader extends AsyncTaskLoader<ArrayList<ListItems>> {
     String jsonResponse;
@@ -71,15 +69,13 @@ public class JSONListLoader extends AsyncTaskLoader<ArrayList<ListItems>> {
     private ArrayList<ListItems> extractFeatureFromJson(String jsonResponse) throws JSONException, IOException {
         ArrayList<ListItems> extractedDataArray=new ArrayList<ListItems>();
         ListItems listItems=new ListItems();
-        int id =0;
-        String name=null;
-        ArrayList<IngredientItems> ingredientsList = new ArrayList<>();
-        ArrayList<StepItems> stepsList = new ArrayList<>();
-
         JSONArray arrayOfItems = new JSONArray(jsonResponse);
-
         int length = arrayOfItems.length();
-        for(int i=0;i<arrayOfItems.length();i++){
+        for(int i=0;i<length;i++){
+            int id =0;
+            String name=null;
+            ArrayList<IngredientItems> ingredientsList = new ArrayList<>();
+            ArrayList<StepItems> stepsList = new ArrayList<>();
             JSONObject items= arrayOfItems.getJSONObject(i);
 
                 if(items.has("id")) {
@@ -90,8 +86,9 @@ public class JSONListLoader extends AsyncTaskLoader<ArrayList<ListItems>> {
                 }
                 if(items.has("ingredients")) {
                     JSONArray ingredients = items.getJSONArray("ingredients");
-                    for(int j=0;j<ingredients.length();j++) {
-                        JSONObject ingredianti = ingredients.getJSONObject(i);
+                    int numOfIngredeients= ingredients.length();
+                    for(int j=0;j<numOfIngredeients;j++) {
+                        JSONObject ingredianti = ingredients.getJSONObject(j);
                         int quantity = 0;
                         String measure = null;
                         String ingredient = null;
@@ -110,7 +107,7 @@ public class JSONListLoader extends AsyncTaskLoader<ArrayList<ListItems>> {
                 if(items.has("steps")) {
                     JSONArray steps = items.getJSONArray("steps");
                     for (int j = 0; j < steps.length(); j++) {
-                        JSONObject stepsi = steps.getJSONObject(i);
+                        JSONObject stepsi = steps.getJSONObject(j);
                         int id1 = 0;
                         String shortDescription = null;
                         String description = null;
@@ -136,7 +133,7 @@ public class JSONListLoader extends AsyncTaskLoader<ArrayList<ListItems>> {
                 }
 
 
-            extractedDataArray.add(new ListItems( id, name,ingredientsList,stepsList));
+            extractedDataArray.add(new ListItems( name,ingredientsList,stepsList));
         }
         return extractedDataArray;
     }

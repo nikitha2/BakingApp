@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textsize">25dp</dimen>
-
+    <dimen name="textsize">25sp</dimen>
+    <dimen name="textsizeIngredients">20sp</dimen>
     <dimen name="cardview_padding">16dp</dimen>
-
+    <dimen name="recipie_padding">8dp</dimen>
+    <dimen name="recipieListItemHeight">42dp</dimen>
+    <dimen name="recipieCardItemHeight">150dp</dimen>
 </resources>

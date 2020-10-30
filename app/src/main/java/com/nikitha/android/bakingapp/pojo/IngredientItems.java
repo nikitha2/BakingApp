@@ -1,7 +1,12 @@
-package com.nikitha.android.bakingapp;
+package com.nikitha.android.bakingapp.pojo;
 
-public class IngredientItems {
+import java.io.Serializable;
 
+import androidx.room.PrimaryKey;
+
+public class IngredientItems implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    int id;
     int quantity;
     String measure;
     String ingredient;

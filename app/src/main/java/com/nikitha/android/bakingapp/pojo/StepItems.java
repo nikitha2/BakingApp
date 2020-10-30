@@ -1,6 +1,8 @@
-package com.nikitha.android.bakingapp;
+package com.nikitha.android.bakingapp.pojo;
 
-public class StepItems {
+import java.io.Serializable;
+
+public class StepItems implements Serializable {
 
     int id;
     String shortDescription;
