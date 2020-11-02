@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 import com.nikitha.android.bakingapp.R;
 import com.nikitha.android.bakingapp.RecipieActivity;
@@ -22,12 +23,15 @@ import java.util.stream.Collectors;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.nikitha.android.bakingapp.CONSTANTS.EMPTY_STRING;
 import static com.nikitha.android.bakingapp.CONSTANTS.POSITION_CLICKED;
 import static com.nikitha.android.bakingapp.CONSTANTS.RECIPIE_BY_NAME;
+import static com.nikitha.android.bakingapp.CONSTANTS.SINGLE_PANE;
 
 public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItemClickListener {
     RecipieAdaptor adapter;
@@ -38,6 +42,14 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
     View rootview;
     Bundle bundle;
     ListItems listItems;
+    OnRecipieStepClickListener mcallback;
+    int positionClicked=0;
+    ConstraintLayout singlePane_recipie;
+    String isSinglePane;
+
+    public interface OnRecipieStepClickListener{
+        void OnRecipieStepSelected(int position);
+    }
     public RecipieFragment() {
     }
 
@@ -45,6 +57,9 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context=context;
+
+        mcallback=(OnRecipieStepClickListener) context;
+
     }
 
     @Nullable
@@ -62,6 +77,7 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
         adapter = new RecipieAdaptor(getContext(),new ArrayList<StepItems>(), RecipieFragment.this);
         layoutManager = new LinearLayoutManager(getContext());
         RecyclerView recyclerView=rootview.findViewById(R.id.recipie_frgament);
+        singlePane_recipie=rootview.findViewById(R.id.singlePane_recipie);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -79,16 +95,24 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
         StepItems stepItems=new StepItems(0, sb.toString(), sb.toString(), null, null);
         listOfStepsForRecipie.add(0,stepItems);
         adapter.setData(listOfStepsForRecipie);
+
+        isSinglePane= bundle.getString(SINGLE_PANE);
+
     }
 
     @Override
     public void onListItemClick(int position) {
-        //Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
         if(position!=0){
-            Intent intent=new Intent(context, RecipieDetailsActivity.class);
-            intent.putExtra(RECIPIE_BY_NAME,listItems);
-            intent.putExtra(POSITION_CLICKED,position);
-            startActivity(intent);
+            if(isSinglePane!=null){
+                Intent intent=new Intent(context, RecipieDetailsActivity.class);
+                intent.putExtra(RECIPIE_BY_NAME,listItems);
+                intent.putExtra(POSITION_CLICKED,position);
+                startActivity(intent);
+            }else{
+                mcallback.OnRecipieStepSelected(position);
+            }
+            positionClicked=position;
+
         }
 
     }

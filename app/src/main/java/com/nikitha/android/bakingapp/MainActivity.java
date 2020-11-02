@@ -4,22 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.nikitha.android.bakingapp.pojo.ListItems;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.nikitha.android.bakingapp.CONSTANTS.RECIPIE_BY_NAME;
+import static com.nikitha.android.bakingapp.CONSTANTS.calcNumOfGrids;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<ListItems>>, MainAdaptor.ListItemClickListener {
     MainAdaptor mainAdaptor;
@@ -36,8 +31,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         doublePanelayout=findViewById(R.id.doublePanelayout);
         if(doublePanelayout !=null){
             layoutManager = new GridLayoutManager(this,3);
-        }else
-            layoutManager = new GridLayoutManager(this,1);
+        }else {
+            layoutManager = new GridLayoutManager(this, 1);
+        }
         recyclerView.setLayoutManager(layoutManager);
 
         mainAdaptor=new MainAdaptor(this,new ArrayList< ListItems>(),this);

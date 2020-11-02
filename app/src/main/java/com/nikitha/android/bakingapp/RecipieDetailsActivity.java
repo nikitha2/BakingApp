@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 import android.widget.Toolbar;
 
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -78,40 +80,38 @@ public class RecipieDetailsActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 positionClicked=positionClicked+1;
-                Bundle bundle=new Bundle();
-                Bundle bundleForMP=new Bundle();
-                descriptionFragment=new DescriptionFragment();
-                mediaPlayerFragment=new MediaPlayerFragment();
-
-                if(positionClicked< numOfSteps){
-                    String desc=data.getSteps().get(positionClicked).getDescription();
-                    bundle.putString(DESCRIPTION,desc);
-                    bundle.putInt(POSITION_CLICKED,positionClicked);
-
-                    String url=data.getSteps().get(positionClicked).getVideoURL();
-                    bundleForMP.putString(VIDEO_URL,url);
-                    bundleForMP.putInt(POSITION_CLICKED,positionClicked);
-
-                }else{
-                    positionClicked=1;
-                    String desc=data.getSteps().get(positionClicked).getDescription();
-                    bundle.putString(DESCRIPTION,desc);
-                    bundle.putInt(POSITION_CLICKED,positionClicked);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.description, descriptionFragment).commit();
-
-                    String url=data.getSteps().get(positionClicked).getVideoURL();
-                    bundleForMP.putString(VIDEO_URL,url);
-                    bundleForMP.putInt(POSITION_CLICKED,positionClicked);
-
-                }
-                descriptionFragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.description, descriptionFragment).commit();
-
-                mediaPlayerFragment.setArguments(bundleForMP);
-                getSupportFragmentManager().beginTransaction().replace(R.id.mediaPlayer, mediaPlayerFragment).commit();
+                replaceDescAndMediaFragments();
             }
         });
     }
+
+    void replaceDescAndMediaFragments() {
+        descriptionFragment=new DescriptionFragment();
+        mediaPlayerFragment=new MediaPlayerFragment();
+        Bundle bundle=new Bundle();
+        Bundle bundleForMP=new Bundle();
+        if(positionClicked< numOfSteps){
+
+
+        }else{
+            positionClicked=1;
+        }
+
+        String desc=data.getSteps().get(positionClicked).getDescription();
+        bundle.putString(DESCRIPTION,desc);
+        bundle.putInt(POSITION_CLICKED,positionClicked);
+
+        String url=data.getSteps().get(positionClicked).getVideoURL();
+        bundleForMP.putString(VIDEO_URL,url);
+        bundleForMP.putInt(POSITION_CLICKED,positionClicked);
+
+        descriptionFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.description, descriptionFragment).commit();
+
+        mediaPlayerFragment.setArguments(bundleForMP);
+        getSupportFragmentManager().beginTransaction().replace(R.id.mediaPlayer, mediaPlayerFragment).commit();
+    }
+
 
     @Override
     protected void onResume() {
@@ -120,10 +120,10 @@ public class RecipieDetailsActivity extends AppCompatActivity  {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) mPlayerView.getLayoutParams();
-            params.width = params.MATCH_PARENT;
-            params.height = params.MATCH_PARENT;
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            params.height = ViewGroup.LayoutParams.MATCH_PARENT;
             mPlayerView.setLayoutParams(params);
-            getSupportActionBar().hide();
+            //getSupportActionBar().hide();
         }
     }
 
