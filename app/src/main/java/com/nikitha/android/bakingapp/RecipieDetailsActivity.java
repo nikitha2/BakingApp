@@ -123,6 +123,7 @@ public class RecipieDetailsActivity extends AppCompatActivity  {
             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
             params.height = ViewGroup.LayoutParams.MATCH_PARENT;
             mPlayerView.setLayoutParams(params);
+
             //getSupportActionBar().hide();
         }
     }
