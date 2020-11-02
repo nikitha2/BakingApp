@@ -2,8 +2,10 @@
 <resources>
     <dimen name="textsize">25sp</dimen>
     <dimen name="textsizeIngredients">20sp</dimen>
-    <dimen name="cardview_padding">16dp</dimen>
-    <dimen name="recipie_padding">8dp</dimen>
+    <dimen name="cardview_padding">2dp</dimen>
+    <dimen name="recipie_padding">16dp</dimen>
     <dimen name="recipieListItemHeight">42dp</dimen>
-    <dimen name="recipieCardItemHeight">150dp</dimen>
+    <dimen name="recipieCardItemHeightMin">150dp</dimen>
+    <dimen name="recipieCardItemHeightMax">200dp</dimen>
+    <dimen name="imagemargin">30sp</dimen>
 </resources>

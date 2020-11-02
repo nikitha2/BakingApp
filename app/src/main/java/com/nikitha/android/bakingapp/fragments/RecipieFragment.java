@@ -83,7 +83,7 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
 
     @Override
     public void onListItemClick(int position) {
-        Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
         if(position!=0){
             Intent intent=new Intent(context, RecipieDetailsActivity.class);
             intent.putExtra(RECIPIE_BY_NAME,listItems);

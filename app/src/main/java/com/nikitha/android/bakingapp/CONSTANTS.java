@@ -6,5 +6,6 @@ public class CONSTANTS {
     public static String POSITION_CLICKED="POSITION";
     public static String VIDEO_URL="VIDEO_URL";
     public static String DESCRIPTION="DESCRIPTION";
+    public static String EMPTY_STRING="";
 
 }

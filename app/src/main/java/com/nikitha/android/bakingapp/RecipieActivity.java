@@ -3,16 +3,9 @@ package com.nikitha.android.bakingapp;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.nikitha.android.bakingapp.arch.MainViewModelFactory;
-import com.nikitha.android.bakingapp.arch.ViewModelMain;
 import com.nikitha.android.bakingapp.fragments.RecipieFragment;
 import com.nikitha.android.bakingapp.pojo.ListItems;
-
-import java.io.Serializable;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.loader.app.LoaderManager;
 
 import static com.nikitha.android.bakingapp.CONSTANTS.RECIPIE_BY_NAME;
 

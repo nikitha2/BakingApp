@@ -3,8 +3,8 @@
 <androidx.cardview.widget.CardView android:id="@+id/card_view"
     android:layout_gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="@dimen/recipieCardItemHeight"
+    android:layout_height="@dimen/recipieCardItemHeightMin"
+    android:maxHeight="@dimen/recipieCardItemHeightMax"
     card_view:cardCornerRadius="4dp"
     card_view:layout_constraintLeft_toLeftOf="parent"
     card_view:layout_constraintRight_toRightOf="parent"
@@ -20,17 +20,34 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
             android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                card_view:layout_constraintWidth_percent="0.3"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                card_view:layout_constraintLeft_toLeftOf="parent"
+                android:gravity="center|center_horizontal|center_vertical"
+                card_view:layout_constraintRight_toLeftOf="@id/title"
+                android:padding="@dimen/cardview_default_radius"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerCrop"/>
             <TextView
                 android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                card_view:layout_constraintWidth_percent="0.7"
+                android:layout_height="wrap_content"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/recipie_card"
                 android:textSize="@dimen/textsize"
-                card_view:layout_constraintLeft_toLeftOf="parent"
+                android:textColor="@color/black"
+                card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintRight_toLeftOf="parent"/>
+                card_view:layout_constraintRight_toRightOf="parent"
+                card_view:layout_constraintLeft_toRightOf="@id/image"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

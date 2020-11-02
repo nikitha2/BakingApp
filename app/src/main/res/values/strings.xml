@@ -2,14 +2,14 @@
     <string name="app_name">Baking App</string>
     <string name="recipie_card">Recipie card</string>
     <string name="baking_time">Baking Time</string>
-    <string name="Ingredients"><b> Ingredients : </b></string>
+    <string name="Ingredients"><b>Ingredients : </b></string>
     <string name="nextBtn"> Next </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="play">Play</string>
     <string name="pause">Pause</string>
     <string name="restart">Restart</string>
-
+    <string name="noVideoToPlay"> No video to play </string>
     <string name="guess">Steps for Recipie</string>
     <string name="notification_text">Press play to see the demo</string>
 

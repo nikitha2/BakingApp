@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nikitha.android.bakingapp.pojo.IngredientItems;
@@ -67,8 +68,22 @@ public class MainAdaptor extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ListItems current = items.get(position);
         TextView textView=(TextView) holder.itemView.findViewById(R.id.title);
+        ImageView image=(ImageView) holder.itemView.findViewById(R.id.image);
         textView.setText(current.getName());
         holder.itemView.setTag(position);
+
+        switch (current.getName()){
+            case "Nutella Pie":image.setImageResource(R.drawable.nutellapie);
+                break;
+            case "Brownies":image.setImageResource(R.drawable.brownies);
+                break;
+            case "Yellow Cake":image.setImageResource(R.drawable.yellowcake);
+                break;
+            case "Cheesecake":image.setImageResource(R.drawable.cheesecake);
+                break;
+            default:
+
+        }
     }
 
     @Override

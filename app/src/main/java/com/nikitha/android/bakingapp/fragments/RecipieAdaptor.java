@@ -74,8 +74,12 @@ public class RecipieAdaptor extends RecyclerView.Adapter {
             String heading = context.getText(R.string.Ingredients).toString();
              textView.setText(heading + "\n" + desc);
         }
-        else
-            textView.setText(String.valueOf(position)+".\t" +desc);
+        else {
+            if(position!=1)
+                textView.setText(String.valueOf(position-1) + ".\t" + desc);
+            else
+                textView.setText(" " + " \t" + desc);
+        }
         holder.itemView.setTag(position);
     }
 
