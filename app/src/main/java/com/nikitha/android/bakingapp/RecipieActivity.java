@@ -35,10 +35,11 @@ public class RecipieActivity extends AppCompatActivity implements RecipieFragmen
         }
         recipieFragment = new RecipieFragment();
         bundle=new Bundle();
+        bundle.putSerializable(RECIPIE_BY_NAME,data);
         if(findViewById(R.id.doublePane_recipie) != null){
             descriptionFragment=new DescriptionFragment();
             mediaPlayerFragment=new MediaPlayerFragment();
-            bundle.putSerializable(RECIPIE_BY_NAME,data);
+//          bundle.putSerializable(RECIPIE_BY_NAME,data);
             recipieFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().add(R.id.steps, recipieFragment).commit();
 
@@ -57,10 +58,8 @@ public class RecipieActivity extends AppCompatActivity implements RecipieFragmen
             getSupportFragmentManager().beginTransaction().add(R.id.mediaPlayer, mediaPlayerFragment).commit();
         }
         else {
-            bundle.putSerializable(RECIPIE_BY_NAME,data);
             bundle.putString(SINGLE_PANE,SINGLE_PANE);
             recipieFragment.setArguments(bundle);
-
             // Add the fragment to the 'fragment_container' FrameLayout
             getSupportFragmentManager().beginTransaction().add(R.id.steps, recipieFragment).commit();
         }

@@ -87,7 +87,7 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
 
         StringBuilder sb=new StringBuilder();
         for(IngredientItems i:listItems.getIngredient()){
-            String s = String.valueOf(i.getQuantity())+" "+i.getMeasure()+" "+i.getIngredient();
+            String s = i.getQuantity() +" "+i.getMeasure()+" "+i.getIngredient();
             sb.append(s);
             sb.append("\n");
         }
@@ -97,7 +97,6 @@ public class RecipieFragment extends Fragment implements RecipieAdaptor.ListItem
         adapter.setData(listOfStepsForRecipie);
 
         isSinglePane= bundle.getString(SINGLE_PANE);
-
     }
 
     @Override
