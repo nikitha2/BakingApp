@@ -12,5 +12,7 @@
     <string name="noVideoToPlay"> No video to play </string>
     <string name="guess">Steps for Recipie</string>
     <string name="notification_text">Press play to see the demo</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
