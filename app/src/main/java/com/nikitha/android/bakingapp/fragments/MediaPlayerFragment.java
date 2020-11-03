@@ -3,6 +3,7 @@ package com.nikitha.android.bakingapp.fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,7 +69,7 @@ public class MediaPlayerFragment extends Fragment implements ExoPlayer.EventList
     private FrameLayout mFullScreenButton;
     private ImageView mFullScreenIcon;
     private Dialog mFullScreenDialog;
-
+    int orientation;
     public MediaPlayerFragment() {
         // Required empty public constructor
     }
@@ -282,6 +283,7 @@ public class MediaPlayerFragment extends Fragment implements ExoPlayer.EventList
 
 
     private void openFullscreenDialog() {
+        orientation = getResources().getConfiguration().orientation;
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         ((ViewGroup) mPlayerView.getParent()).removeView(mPlayerView);
         mFullScreenDialog.addContentView(mPlayerView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -293,16 +295,11 @@ public class MediaPlayerFragment extends Fragment implements ExoPlayer.EventList
 
 
     private void closeFullscreenDialog() {
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        if(orientation== Configuration.ORIENTATION_PORTRAIT)
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((ViewGroup) mPlayerView.getParent()).removeView(mPlayerView);
-
-        System.out.println("context= "+context);
-        System.out.println("-------------------ViewGroup parentLayout = ((ViewGroup) getView().getParent());= "+((ViewGroup) getView().getParent()));
-        System.out.println("-------------------getActivity().singlePane_recipieDetails= "+getActivity().findViewById(R.id.singlePane_recipieDetails));
-        System.out.println("-------------------getActivity().doublePane_recipie= "+getActivity().findViewById(R.id.doublePane_recipie));
-        System.out.println("-------------------(RelativeLayout)getActivity().findViewById(R.id.mediaPlayer);= "+getActivity().findViewById(R.id.mediaPlayer));
-
         ((FrameLayout) getView().getParent()).addView(mPlayerView);
+
         mExoPlayerFullscreen = false;
         mFullScreenDialog.dismiss();
         mFullScreenIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_fullscreen_expand));
