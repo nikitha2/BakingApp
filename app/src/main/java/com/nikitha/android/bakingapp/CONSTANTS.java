@@ -17,8 +17,10 @@ public class CONSTANTS {
     public final static String STATE_RESUME_WINDOW = "resumeWindow";
     public final static String STATE_RESUME_POSITION = "resumePosition";
     public final static String STATE_PLAYER_FULLSCREEN = "playerFullscreen";
-    public static int calcNumOfGrids(){
+    public final static int COUNT = 10;
 
+
+    public static int calcNumOfGrids(){
         int width = getScreenWidth();
         return width;
     }

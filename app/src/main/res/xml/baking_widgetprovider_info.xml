@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/baking_widgetprovider"
+    android:initialLayout="@layout/baking_widgetprovider"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:previewImage="@drawable/cheesecake"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    android:autoAdvanceViewId="@id/stack_view"/>
