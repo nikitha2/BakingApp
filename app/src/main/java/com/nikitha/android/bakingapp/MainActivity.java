@@ -14,11 +14,10 @@ import com.nikitha.android.bakingapp.pojo.ListItems;
 import java.util.ArrayList;
 
 import static com.nikitha.android.bakingapp.CONSTANTS.RECIPIE_BY_NAME;
-import static com.nikitha.android.bakingapp.CONSTANTS.calcNumOfGrids;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<ListItems>>, MainAdaptor.ListItemClickListener {
     MainAdaptor mainAdaptor;
-    ArrayList<ListItems> data= new ArrayList<ListItems>();
+    public static ArrayList<ListItems> DATA = new ArrayList<ListItems>();
     private RecyclerView.LayoutManager layoutManager;
     ConstraintLayout  doublePanelayout;
     @Override
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(@NonNull Loader<ArrayList<ListItems>> loader, ArrayList<ListItems> data) {
         if(data!=null && data.size()!=0){
             mainAdaptor.setData(data);
-            this.data=data;
+            MainActivity.DATA =data;
             //setupViewModel(data);
         }
     }
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onListItemClick(int position) {
         Intent intent=new Intent(this,RecipieActivity.class);
-        intent.putExtra(RECIPIE_BY_NAME,data.get(position));
+        intent.putExtra(RECIPIE_BY_NAME, DATA.get(position));
         startActivity(intent);
     }
 }

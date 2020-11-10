@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
@@ -204,11 +205,25 @@ public class MediaPlayerFragment extends Fragment implements ExoPlayer.EventList
     @Override
     public void onDestroy() {
         super.onDestroy();
-        releasePlayer();
+        //releasePlayer();
         mMediaSession.setActive(false);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+            releasePlayer();
+        }
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            releasePlayer();
+        }
+    }
 
 
     @Override

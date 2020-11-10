@@ -1,10 +1,9 @@
 package com.nikitha.android.bakingapp;
 
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.WindowManager;
+import android.widget.ImageView;
 
-import androidx.annotation.Dimension;
+import com.nikitha.android.bakingapp.pojo.ListItems;
 
 public class CONSTANTS {
 
@@ -17,8 +16,12 @@ public class CONSTANTS {
     public final static String STATE_RESUME_WINDOW = "resumeWindow";
     public final static String STATE_RESUME_POSITION = "resumePosition";
     public final static String STATE_PLAYER_FULLSCREEN = "playerFullscreen";
-    public final static int COUNT = 10;
-
+    public final static int COUNT = 4;
+    public static final String TOAST_ACTION = "com.example.android.stackwidget.TOAST_ACTION";
+    public static final String EXTRA_ITEM = "com.example.android.stackwidget.EXTRA_ITEM";
+    public static final long INVALID_ID = -1;
+    public static final String EXTRA_ID = "com.example.android.baking.extra.ID";
+    public static int RECIPIE_ID=1;
 
     public static int calcNumOfGrids(){
         int width = getScreenWidth();
@@ -27,6 +30,22 @@ public class CONSTANTS {
 
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
+
+    public static int getImageForName(String name) {
+        switch (name) {
+            case "Nutella Pie":
+                return (R.drawable.nutellapie);
+            case "Brownies":
+                return (R.drawable.brownies);
+            case "Yellow Cake":
+                return (R.drawable.yellowcake);
+            case "Cheesecake":
+                return (R.drawable.cheesecake);
+            default:
+
+        }
+        return 0;
     }
 
 }

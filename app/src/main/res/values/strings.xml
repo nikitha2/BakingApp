@@ -13,7 +13,15 @@
     <string name="guess">Steps for Recipie</string>
     <string name="notification_text">Press play to see the demo</string>
     <string name="brownies">Brownies</string>
+    <string name="nutellapie">Nutella Pie</string>
     <string name="add_widget">Add widget</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="empty_view_text">This is the empty view</string>
+
+    <string name="brownie2">2. Melt the butter and bittersweet chocolate together in a microwave or a double boiler. If microwaving, heat for 30 seconds at a time, removing bowl and stirring ingredients in between."</string>
+    <string name="potrait">Potrait</string>
+    <string name="landscape">Landscape</string>
+    <string name="cheesecake6">"6. Scrape down the sides of the pan. Add in the eggs one at a time, beating each one on medium-low speed just until incorporated. Scrape down the sides and bottom of the bowl. Add in both egg yolks and beat until just incorporated. "</string>
+    <string name="brownie3">"3. Mix both sugars into the melted chocolate in a large mixing bowl until mixture is smooth and uniform."</string>
+    <string name="cheesecake7">"7. Add the cream and remaining tablespoon of vanilla to the batter and beat on medium-low speed until just incorporated. "</string>
 </resources>

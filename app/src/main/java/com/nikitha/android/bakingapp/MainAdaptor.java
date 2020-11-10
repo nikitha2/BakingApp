@@ -18,6 +18,8 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.nikitha.android.bakingapp.CONSTANTS.getImageForName;
+
 public class MainAdaptor extends RecyclerView.Adapter {
     ListItemClickListener mClickListener;
     Context context;
@@ -72,22 +74,15 @@ public class MainAdaptor extends RecyclerView.Adapter {
         textView.setText(current.getName());
         holder.itemView.setTag(position);
 
-        switch (current.getName()){
-            case "Nutella Pie":image.setImageResource(R.drawable.nutellapie);
-                break;
-            case "Brownies":image.setImageResource(R.drawable.brownies);
-                break;
-            case "Yellow Cake":image.setImageResource(R.drawable.yellowcake);
-                break;
-            case "Cheesecake":image.setImageResource(R.drawable.cheesecake);
-                break;
-            default:
+        image.setImageResource(getImageForName(current.getName()));
 
-        }
     }
+
+
+
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items==null?0:items.size();
     }
 }

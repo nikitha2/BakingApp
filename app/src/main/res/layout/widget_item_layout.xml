@@ -8,15 +8,16 @@
     <ImageView
         android:id="@+id/appwidget_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="10"
         android:scaleType="centerCrop"
+        android:maxHeight="@dimen/recipieListItemHeight"
         android:src="@drawable/brownies"/>
 
     <TextView
         android:id="@+id/appwidget_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:textColor="@color/black"
         android:textAlignment="center"

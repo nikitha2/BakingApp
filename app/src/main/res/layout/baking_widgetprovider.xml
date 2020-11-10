@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <StackView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/stack_view"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <GridView
+        android:id="@+id/widget_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:loopViews="true" />
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:numColumns="4"
+        android:gravity="center"/>
+
+    <RelativeLayout
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:background="@drawable/widget_item_background"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:text="@string/empty_view_text"
-        android:textSize="20sp" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/widget_plant_emptyText"
+            android:layout_centerInParent="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center_horizontal|center|center_vertical"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:textColor="@color/colorAccent"
+            tools:text="Garden is empty"
+            android:layout_below="@id/widget_plant_emptyImage"/>
+
+        <ImageView
+            android:id="@+id/widget_plant_emptyImage"
+            android:alpha="0.2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/nutellapie" />
+
+    </RelativeLayout>
+
+
+
+
+
+
 </FrameLayout>
